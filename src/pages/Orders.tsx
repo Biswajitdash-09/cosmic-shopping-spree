@@ -34,19 +34,19 @@ const Orders = () => {
           {hasOrders ? (
             <div className="border rounded-md">
               {cart.map((item) => (
-                <div key={item.id} className="border-b p-4 flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div key={item.product.id} className="border-b p-4 flex flex-col md:flex-row justify-between items-start md:items-center">
                   <div className="flex items-center mb-4 md:mb-0">
                     <div className="w-16 h-16 flex-shrink-0 mr-4">
                       <img 
-                        src={item.image} 
-                        alt={item.title}
+                        src={item.product.image} 
+                        alt={item.product.title}
                         className="w-full h-full object-contain" 
                       />
                     </div>
                     <div>
-                      <h3 className="font-medium">{item.title}</h3>
+                      <h3 className="font-medium">{item.product.title}</h3>
                       <p className="text-sm text-gray-500">Quantity: {item.quantity}</p>
-                      <p className="text-sm text-gray-500">₹{(item.price * item.quantity).toLocaleString('en-IN')}</p>
+                      <p className="text-sm text-gray-500">₹{(item.product.price * item.quantity).toLocaleString('en-IN')}</p>
                     </div>
                   </div>
                   <div className="flex flex-col w-full md:w-auto">
