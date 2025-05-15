@@ -15,8 +15,17 @@ import Category from "./pages/Category";
 import Deals from "./pages/Deals";
 import Prime from "./pages/Prime";
 import CustomerService from "./pages/CustomerService";
+import Account from "./pages/Account";
+import Orders from "./pages/Orders";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60 * 1000, // 1 minute
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -35,6 +44,8 @@ const App = () => (
             <Route path="/deals" element={<Deals />} />
             <Route path="/prime" element={<Prime />} />
             <Route path="/customer-service" element={<CustomerService />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/orders" element={<Orders />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
