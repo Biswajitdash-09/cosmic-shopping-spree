@@ -28,7 +28,7 @@ const Hero = () => {
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-white p-4 rounded-lg">
               <img 
-                src="https://source.unsplash.com/photo-1581091226825-a6a2a5aee158" 
+                src="https://images.unsplash.com/photo-1498049794561-7780e7231661" 
                 alt="Electronics" 
                 className="w-full h-40 object-cover rounded-md" 
               />
@@ -36,7 +36,7 @@ const Hero = () => {
             </div>
             <div className="bg-white p-4 rounded-lg">
               <img 
-                src="https://source.unsplash.com/photo-1721322800607-8c38375eef04" 
+                src="https://images.unsplash.com/photo-1565183928294-7063f23ce0f8" 
                 alt="Home & Kitchen" 
                 className="w-full h-40 object-cover rounded-md" 
               />

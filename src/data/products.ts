@@ -7,7 +7,7 @@ export const products: Product[] = [
     title: "Apple iPhone 13 Pro Max - 128GB - Sierra Blue",
     description: "Apple iPhone 13 Pro Max. Super Retina XDR display with ProMotion. Ceramic Shield, tougher than any smartphone glass. A15 Bionic chip. Pro camera system with new 12MP Telephoto, Wide and Ultra Wide cameras.",
     price: 109999,
-    image: "https://images.unsplash.com/photo-1606041008023-472dfb5e530f",
+    image: "https://images.unsplash.com/photo-1632661674596-618e80f66b5b",
     category: "Electronics",
     rating: 4.8,
     reviews: 2458,

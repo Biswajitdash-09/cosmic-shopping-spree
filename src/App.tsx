@@ -11,6 +11,10 @@ import Cart from "./pages/Cart";
 import Payment from "./pages/Payment";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import NotFound from "./pages/NotFound";
+import Category from "./pages/Category";
+import Deals from "./pages/Deals";
+import Prime from "./pages/Prime";
+import CustomerService from "./pages/CustomerService";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +31,10 @@ const App = () => (
             <Route path="/cart" element={<Cart />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
+            <Route path="/category/:categoryName" element={<Category />} />
+            <Route path="/deals" element={<Deals />} />
+            <Route path="/prime" element={<Prime />} />
+            <Route path="/customer-service" element={<CustomerService />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
