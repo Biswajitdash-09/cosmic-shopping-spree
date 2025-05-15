@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Star, ShoppingCart, Package } from 'lucide-react';
+import { Star, ShoppingCart, Package, IndianRupee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -89,20 +89,23 @@ const ProductDetail = () => {
                 <div className="flex items-baseline">
                   {product.originalPrice && (
                     <span className="text-red-600 mr-2">
-                      Save ${(product.originalPrice - product.price).toFixed(2)} ({Math.round((1 - product.price / product.originalPrice) * 100)}%)
+                      Save <IndianRupee className="h-3 w-3 inline" />{(product.originalPrice - product.price).toLocaleString('en-IN')} ({Math.round((1 - product.price / product.originalPrice) * 100)}%)
                     </span>
                   )}
                 </div>
                 
-                <div className="flex items-baseline">
-                  <span className="text-sm mr-1">$</span>
-                  <span className="text-3xl font-bold">{product.price.toFixed(2)}</span>
+                <div className="flex items-center">
+                  <IndianRupee className="h-4 w-4 mr-1" />
+                  <span className="text-3xl font-bold">{product.price.toLocaleString('en-IN')}</span>
                 </div>
                 
                 {product.originalPrice && (
-                  <div className="text-gray-500">
+                  <div className="text-gray-500 flex items-center">
                     <span className="text-sm">List Price: </span>
-                    <span className="line-through">${product.originalPrice.toFixed(2)}</span>
+                    <span className="line-through ml-1 flex items-center">
+                      <IndianRupee className="h-3 w-3 mr-1" />
+                      {product.originalPrice.toLocaleString('en-IN')}
+                    </span>
                   </div>
                 )}
               </div>
@@ -139,9 +142,10 @@ const ProductDetail = () => {
                 </Button>
                 
                 <Button 
+                  asChild
                   className="w-full bg-orange-500 hover:bg-orange-600"
                 >
-                  Buy Now
+                  <Link to="/payment">Buy Now</Link>
                 </Button>
               </div>
             </div>

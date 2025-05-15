@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, IndianRupee } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CartItem from '@/components/CartItem';
@@ -11,11 +11,11 @@ import { useCart } from '@/hooks/useCart';
 const Cart = () => {
   const { cart, subtotal, totalItems } = useCart();
   
-  // Calculate shipping fee (free if subtotal > 35)
-  const shippingFee = subtotal > 35 ? 0 : 5.99;
+  // Calculate shipping fee (free if subtotal > 3500)
+  const shippingFee = subtotal > 3500 ? 0 : 199;
   
-  // Calculate tax (8.25%)
-  const estimatedTax = subtotal * 0.0825;
+  // Calculate tax (18% GST)
+  const estimatedTax = subtotal * 0.18;
   
   // Calculate order total
   const orderTotal = subtotal + shippingFee + estimatedTax;
@@ -51,8 +51,10 @@ const Cart = () => {
                   ))}
                 </div>
                 
-                <div className="text-right mt-4 text-lg font-bold">
-                  Subtotal ({totalItems} items): ${subtotal.toFixed(2)}
+                <div className="text-right mt-4 text-lg font-bold flex justify-end items-center">
+                  Subtotal ({totalItems} items): 
+                  <IndianRupee className="h-4 w-4 ml-1" />
+                  {subtotal.toLocaleString('en-IN')}
                 </div>
               </div>
             </div>
@@ -63,37 +65,52 @@ const Cart = () => {
                 <h2 className="text-xl font-bold mb-4">Order Summary</h2>
                 
                 <div className="space-y-2 mb-4">
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <span>Items ({totalItems}):</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span className="flex items-center">
+                      <IndianRupee className="h-4 w-4 mr-1" />
+                      {subtotal.toLocaleString('en-IN')}
+                    </span>
                   </div>
                   
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <span>Shipping:</span>
                     <span>
                       {shippingFee === 0 ? (
                         <span className="text-green-600">FREE</span>
                       ) : (
-                        `$${shippingFee.toFixed(2)}`
+                        <span className="flex items-center">
+                          <IndianRupee className="h-4 w-4 mr-1" />
+                          {shippingFee.toLocaleString('en-IN')}
+                        </span>
                       )}
                     </span>
                   </div>
                   
-                  <div className="flex justify-between">
-                    <span>Estimated tax:</span>
-                    <span>${estimatedTax.toFixed(2)}</span>
+                  <div className="flex justify-between items-center">
+                    <span>GST (18%):</span>
+                    <span className="flex items-center">
+                      <IndianRupee className="h-4 w-4 mr-1" />
+                      {estimatedTax.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
+                    </span>
                   </div>
                 </div>
                 
                 <div className="border-t pt-4 mb-4">
-                  <div className="flex justify-between font-bold text-lg">
+                  <div className="flex justify-between font-bold text-lg items-center">
                     <span>Order total:</span>
-                    <span>${orderTotal.toFixed(2)}</span>
+                    <span className="flex items-center">
+                      <IndianRupee className="h-4 w-4 mr-1" />
+                      {orderTotal.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
+                    </span>
                   </div>
                 </div>
                 
-                <Button className="w-full bg-amazon-yellow hover:bg-amazon-orange text-amazon-dark">
-                  Proceed to Checkout
+                <Button 
+                  asChild
+                  className="w-full bg-amazon-yellow hover:bg-amazon-orange text-amazon-dark"
+                >
+                  <Link to="/payment">Proceed to Payment</Link>
                 </Button>
                 
                 {shippingFee === 0 && (
@@ -104,7 +121,7 @@ const Cart = () => {
                 
                 {shippingFee > 0 && (
                   <div className="mt-4 text-sm text-center">
-                    Add more items worth ${(35 - subtotal).toFixed(2)} to qualify for FREE Shipping
+                    Add more items worth <IndianRupee className="h-3 w-3 inline" />{(3500 - subtotal).toLocaleString('en-IN')} to qualify for FREE Shipping
                   </div>
                 )}
               </div>

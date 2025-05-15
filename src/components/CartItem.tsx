@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Trash } from 'lucide-react';
+import { Trash, IndianRupee } from 'lucide-react';
 import { useCart } from '@/hooks/useCart';
 import type { CartItem as CartItemType } from '@/types';
 
@@ -63,8 +63,9 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
             </div>
           </div>
           
-          <div className="font-bold text-lg mt-2 sm:mt-0">
-            ${(product.price * quantity).toFixed(2)}
+          <div className="font-bold text-lg mt-2 sm:mt-0 flex items-center">
+            <IndianRupee className="h-4 w-4 mr-1" />
+            {(product.price * quantity).toLocaleString('en-IN')}
           </div>
         </div>
       </div>

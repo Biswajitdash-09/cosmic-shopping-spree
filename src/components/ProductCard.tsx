@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star } from 'lucide-react';
+import { Star, IndianRupee } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/useCart";
 import type { Product } from "@/types";
@@ -58,11 +58,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <span className="text-xs ml-1">({product.reviews})</span>
       </div>
       
-      <div className="mb-2">
-        <span className="font-bold text-lg">${product.price.toFixed(2)}</span>
+      <div className="mb-2 flex items-center">
+        <IndianRupee className="h-3 w-3 mr-1" />
+        <span className="font-bold text-lg">{product.price.toLocaleString('en-IN')}</span>
         {product.originalPrice && (
           <span className="text-xs text-gray-400 line-through ml-2">
-            ${product.originalPrice.toFixed(2)}
+            <IndianRupee className="h-2 w-2 inline" />
+            {product.originalPrice.toLocaleString('en-IN')}
           </span>
         )}
       </div>
